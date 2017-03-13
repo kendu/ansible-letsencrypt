@@ -1,0 +1,6 @@
+---
+# Get certificates by overriding configuration with --standalone and prehooking
+# NginX stop
+- name: Get certificates
+  command: "{{letsencrypt_executable}} certonly --nginx --non-interactive --config {{letsencrypt_config_dir}}/{{ item.name }}.ini"
+  with_items: "{{ letsencrypt_domains_list }}"
